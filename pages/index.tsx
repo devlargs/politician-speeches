@@ -22,6 +22,7 @@ import { DELETE_SPEECH } from '@graphql/mutations/speech';
 import { GET_SPEECHES } from '@graphql/queries/speeches';
 import { Speech } from '@graphql/types';
 import dayjs from 'dayjs';
+import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 import { AiFillDelete, AiFillEye } from 'react-icons/ai';
 
@@ -99,9 +100,11 @@ const Home: FC = () => {
                                 </Td>
                                 <Td>{dayjs(speech.date).format('MMM DD, YYYY')}</Td>
                                 <Td>
-                                  <Button colorScheme="blue">
-                                    <AiFillEye />
-                                  </Button>
+                                  <Link href={`/speeches/${speech._id}`} passHref>
+                                    <Button colorScheme="blue">
+                                      <AiFillEye />
+                                    </Button>
+                                  </Link>
                                   <Button
                                     colorScheme="red"
                                     ml="4"

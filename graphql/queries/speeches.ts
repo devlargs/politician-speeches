@@ -15,3 +15,19 @@ export const GET_SPEECHES = gql`
     }
   }
 `;
+
+export const GET_SPEECH_BY_ID = gql`
+  query speech($id: String!) {
+    speech(_id: $id) {
+      _id
+      date
+      title
+      content
+      politicians {
+        imageUrl
+        firstName
+        lastName
+      }
+    }
+  }
+`;

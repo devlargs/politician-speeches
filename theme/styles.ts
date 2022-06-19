@@ -127,6 +127,31 @@ const globalStyles = {
     '.ckeditorContent h6': {
       fontSize: '14pt',
     },
+    '.transcript': {
+      marginTop: 10,
+    },
+    '.transcript h1': {
+      fontSize: '32pt',
+    },
+    '.transcript h2': {
+      fontSize: '26pt',
+    },
+    '.transcript h3': {
+      fontSize: '22pt',
+    },
+    '.transcript h4': {
+      fontSize: '20pt',
+    },
+    '.transcript h5': {
+      fontSize: '18pt',
+    },
+    '.transcript h6': {
+      fontSize: '14pt',
+    },
+    '.transcript p': {
+      paddingTop: '10px',
+      paddingBottom: '10px',
+    },
   },
 };
 
