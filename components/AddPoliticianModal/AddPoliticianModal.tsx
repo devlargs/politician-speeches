@@ -24,7 +24,7 @@ const AddPoliticianModal: FC = () => {
   const setVisible = usePoliticianModal((e) => e.setVisible);
   const visible = usePoliticianModal((e) => e.visible);
   const addPolitician = usePoliticians((e) => e.addPolitician);
-  const [createPolitician] = useMutation(CREATE_POLITICIANS);
+  const [createPolitician, { loading }] = useMutation(CREATE_POLITICIANS);
   const {
     register,
     handleSubmit,
@@ -96,7 +96,7 @@ const AddPoliticianModal: FC = () => {
               />
               {errors.imageUrl?.message && <FormHelperText color="red.400">{errors.imageUrl?.message}</FormHelperText>}
             </FormControl>
-            <Button colorScheme="facebook" mt="4" type="submit">
+            <Button colorScheme="facebook" mt="4" type="submit" isLoading={loading}>
               Add
             </Button>
           </ModalBody>

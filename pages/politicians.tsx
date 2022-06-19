@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, Image, Spinner, Text } from '@chakra-ui/react';
+import { Alert, AlertIcon, Box, Button, Flex, Grid, Image, Spinner, Text } from '@chakra-ui/react';
 import Card from '@components/Card';
 import usePoliticianModal from '@store/usePoliticianModal';
 import { usePoliticians } from '@store/usePoliticians';
@@ -29,27 +29,32 @@ const Politicians: FC = () => {
             </>
           </Grid>
         ) : (
-          <>
+          <Box my="4">
             {politicians.length ? (
               <Grid templateColumns="repeat(5, 1fr)" gap={6} mt="2rem">
                 {politicians.map((items) => (
                   <Card key={items._id}>
                     <Image
+                      textAlign="center"
+                      m="auto"
                       maxW="200px"
                       h="240px"
                       alt={`${items.firstName} ${items.lastName} Image`}
                       src={items.imageUrl}
                     />
-                    <Text fontSize="18px" mt="4">
+                    <Text fontSize="16px" mt="4">
                       {items.firstName} {items.lastName}
                     </Text>
                   </Card>
                 ))}
               </Grid>
             ) : (
-              <>No politicians found</>
+              <Alert status="info" mt="4">
+                <AlertIcon />
+                No Politicians Found
+              </Alert>
             )}
-          </>
+          </Box>
         )}
       </Box>
     </Box>

@@ -1,5 +1,7 @@
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Flex,
@@ -16,6 +18,7 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import AddSpeechForm from '@components/AddSpeechForm';
+import { DELETE_SPEECH } from '@graphql/mutations/speech';
 import { GET_SPEECHES } from '@graphql/queries/speeches';
 import { Speech } from '@graphql/types';
 import dayjs from 'dayjs';
@@ -23,10 +26,15 @@ import { FC, useEffect, useState } from 'react';
 import { AiFillDelete, AiFillEye } from 'react-icons/ai';
 
 const Home: FC = () => {
+  const [state, setState] = useState<'view' | 'add'>('view');
   const [getSpeeches, { data, loading }] = useLazyQuery<{
     speeches: Speech[];
-  }>(GET_SPEECHES);
-  const [state, setState] = useState<'view' | 'add'>('view');
+  }>(GET_SPEECHES, {
+    onCompleted: () => {
+      setState('view');
+    },
+  });
+  const [deleteSpeech] = useMutation(DELETE_SPEECH);
 
   useEffect(() => {
     void getSpeeches();
@@ -37,7 +45,6 @@ const Home: FC = () => {
       <Box maxW="1280px" m="auto">
         <Flex w="100%" justifyContent="space-between">
           <Text fontSize="24px">{state === 'add' ? 'Add a Speech' : 'Speeches'} </Text>
-          {/* {state === 'view' && ( */}
           <Button
             colorScheme={state === 'view' ? 'facebook' : 'red'}
             onClick={(): void => setState((e) => (e === 'add' ? 'view' : 'add'))}
@@ -95,7 +102,21 @@ const Home: FC = () => {
                                   <Button colorScheme="blue">
                                     <AiFillEye />
                                   </Button>
-                                  <Button colorScheme="red" ml="4">
+                                  <Button
+                                    colorScheme="red"
+                                    ml="4"
+                                    onClick={async (): Promise<void> => {
+                                      try {
+                                        await deleteSpeech({
+                                          variables: {
+                                            id: speech._id,
+                                          },
+                                        });
+                                      } finally {
+                                        void getSpeeches();
+                                      }
+                                    }}
+                                  >
                                     <AiFillDelete />
                                   </Button>
                                 </Td>
@@ -107,7 +128,10 @@ const Home: FC = () => {
                     </TableContainer>
                   </Box>
                 ) : (
-                  <>No Speeches Found</>
+                  <Alert status="info" mt="4">
+                    <AlertIcon />
+                    No Speeches Found
+                  </Alert>
                 )}
               </>
             )}
@@ -116,9 +140,9 @@ const Home: FC = () => {
 
         {state === 'add' && (
           <AddSpeechForm
+            speechLoading={loading}
             callback={(): void => {
               void getSpeeches();
-              setState('view');
             }}
           />
         )}

@@ -10,11 +10,11 @@ import { useForm } from 'react-hook-form';
 
 const Editor: any = dynamic(() => import('react-draft-wysiwyg').then((mod) => mod.Editor), { ssr: false });
 
-const AddSpeechForm: FC<{ callback: () => void }> = ({ callback }) => {
+const AddSpeechForm: FC<{ callback: () => void; speechLoading: boolean }> = ({ callback, speechLoading }) => {
   const [content, setContent] = useState(() => EditorState.createEmpty());
   const { handleSubmit, register, setValue, reset } = useForm();
   const politicians = usePoliticians((e) => e.politicians);
-  const [createSpeech] = useMutation(CREATE_SPEECH);
+  const [createSpeech, { loading }] = useMutation(CREATE_SPEECH);
   const toast = useToast();
   const [key, setKey] = useState(+new Date());
 
@@ -54,8 +54,10 @@ const AddSpeechForm: FC<{ callback: () => void }> = ({ callback }) => {
     } catch ({ message }) {
       if (message) {
         showError(message);
+      } else {
+        resetForm();
+        showError('Something went wrong');
       }
-      resetForm();
     } finally {
       resetForm();
       callback();
@@ -65,6 +67,9 @@ const AddSpeechForm: FC<{ callback: () => void }> = ({ callback }) => {
   return (
     <Box my="4" key={key}>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <Button my="16px" colorScheme="facebook" type="submit" isLoading={loading || speechLoading}>
+          Save Speech
+        </Button>
         <FormControl>
           <FormLabel htmlFor="title">Title</FormLabel>
           <Input id="title" required {...register('title', { required: 'Title is required' })} />
@@ -102,9 +107,6 @@ const AddSpeechForm: FC<{ callback: () => void }> = ({ callback }) => {
             }}
           />
         </FormControl>
-        <Button mt="16px" colorScheme="facebook" type="submit">
-          Save
-        </Button>
       </form>
     </Box>
   );

@@ -7,3 +7,9 @@ export const CREATE_SPEECH = gql`
     }
   }
 `;
+
+export const DELETE_SPEECH = gql`
+  mutation deleteSpeech($id: String!) {
+    deleteSpeech(id: $id)
+  }
+`;
