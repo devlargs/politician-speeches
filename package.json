@@ -10,18 +10,39 @@
     "lint:js": "eslint src --ext .ts --ext .tsx --fix",
     "lint": "next lint",
     "check-updates": "ncu -u",
-    "check-updates-minor": "ncu -u -t minor"
+    "check-updates-minor": "ncu -u -t minor",
+    "gql": "graphql-codegen"
   },
-  
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run tsc-node && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{**/*,*}.{json,css,md}": [
+      "prettier --write"
+    ],
+    "{**/*,*}.{ts,tsx,js,jsx}": [
+      "eslint .eslintrc.js --fix --max-warnings=-1",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
+    "@apollo/client": "3.5.10",
     "@chakra-ui/react": "^1.8.5",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.5.1",
+    "@graphql-codegen/typescript-operations": "^2.4.2",
+    "@graphql-codegen/typescript-react-query": "^3.5.14",
     "framer-motion": "^6.2.8",
+    "graphql": "^15.7.2",
     "lodash": "^4.17.21",
     "next": "12.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",

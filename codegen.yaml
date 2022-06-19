@@ -1,0 +1,9 @@
+schema: https://politicians-speeches-api.herokuapp.com/graphql
+generates:
+  ./graphql/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config:
+      fetcher: fetch
