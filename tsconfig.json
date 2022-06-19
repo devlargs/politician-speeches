@@ -6,7 +6,8 @@
       "@components/*": ["components/*"],
       "@graphql/*": ["graphql/*"],
       "@helpers/*": ["helpers*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@theme/*": ["theme/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

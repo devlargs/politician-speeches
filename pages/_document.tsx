@@ -11,7 +11,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body style={{ margin: 0, fontFamily: 'Ubuntu; sans-serif', background: '#F5F5F5' }}>
+        <body style={{ margin: 0, fontFamily: 'Ubuntu; sans-serif' }}>
           <Main />
           <NextScript />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
