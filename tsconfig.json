@@ -5,6 +5,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@graphql/*": ["graphql/*"],
+      "@helpers/*": ["helpers*"],
       "@store/*": ["store/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],

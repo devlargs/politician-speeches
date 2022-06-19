@@ -1,18 +1,22 @@
 import { Box, Button, Flex, Grid, Image, Spinner, Text } from '@chakra-ui/react';
 import Card from '@components/Card';
+import usePoliticianModal from '@store/usePoliticianModal';
 import { usePoliticians } from '@store/usePoliticians';
 import { FC } from 'react';
 
 const Politicians: FC = () => {
   const politicians = usePoliticians((e) => e.politicians);
   const loading = usePoliticians((e) => e.loading);
+  const setVisible = usePoliticianModal((e) => e.setVisible);
 
   return (
     <Box px="4" mt="8">
       <Box maxW="1280px" m="auto">
         <Flex w="100%" justifyContent="space-between">
           <Text fontSize="24px">Politicians</Text>
-          <Button colorScheme="facebook">+Add</Button>
+          <Button colorScheme="facebook" onClick={(): void => setVisible(true)}>
+            +Add
+          </Button>
         </Flex>
 
         {loading ? (

@@ -1,5 +1,6 @@
 import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
+import AddPoliticianModal from '@components/AddPoliticianModal';
 import Header from '@components/Header';
 import client from '@graphql/client';
 import { usePoliticians } from '@store/usePoliticians';
@@ -18,6 +19,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <ChakraProvider>
         <Header />
         <Component {...pageProps} />
+        <AddPoliticianModal />
       </ChakraProvider>
     </ApolloProvider>
   );
