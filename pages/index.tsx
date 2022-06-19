@@ -114,7 +114,14 @@ const Home: FC = () => {
           </>
         )}
 
-        {state === 'add' && <AddSpeechForm />}
+        {state === 'add' && (
+          <AddSpeechForm
+            callback={(): void => {
+              void getSpeeches();
+              setState('view');
+            }}
+          />
+        )}
       </Box>
     </Box>
   );
