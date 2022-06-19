@@ -36,6 +36,7 @@
     "@graphql-codegen/typescript": "^2.5.1",
     "@graphql-codegen/typescript-operations": "^2.4.2",
     "@graphql-codegen/typescript-react-query": "^3.5.14",
+    "dayjs": "^1.11.3",
     "framer-motion": "^6.2.8",
     "graphql": "^15.7.2",
     "lodash": "^4.17.21",
@@ -43,6 +44,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.32.2",
+    "react-icons": "^4.4.0",
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
