@@ -46,7 +46,7 @@ const Home: FC = () => {
           </Skeleton>
         </Box>
       </Box>
-      <Box maxW="1000px" m="auto" pb="8">
+      <Box maxW="1000px" m="auto" pb="8" px={8}>
         <Skeleton isLoaded={!loading} fadeDuration={1}>
           <Box
             className="transcript"
