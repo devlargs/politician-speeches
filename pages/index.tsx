@@ -92,7 +92,7 @@ const Home: FC = () => {
               <>
                 {data?.speeches.length ? (
                   <Box mr="4">
-                    <TableContainer>
+                    <TableContainer mb="8">
                       <Table variant="striped" size="lg">
                         <Thead>
                           <Tr>

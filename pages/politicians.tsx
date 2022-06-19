@@ -31,7 +31,17 @@ const Politicians: FC = () => {
         ) : (
           <Box my="4">
             {politicians.length ? (
-              <Grid templateColumns="repeat(5, 1fr)" gap={6} mt="2rem">
+              <Grid
+                templateColumns={{
+                  base: 'repeat(1, 1fr)',
+                  sm: 'repeat(2, 1fr)',
+                  md: 'repeat(3, 1fr)',
+                  lg: 'repeat(4, 1fr)',
+                  xl: 'repeat(5, 1fr)',
+                }}
+                gap={6}
+                mt="2rem"
+              >
                 {politicians.map((items) => (
                   <Card key={items._id}>
                     <Image

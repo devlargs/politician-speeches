@@ -152,6 +152,14 @@ const globalStyles = {
       paddingTop: '10px',
       paddingBottom: '10px',
     },
+    '.transcript blockquote': {
+      // paddingTop: '10px',
+      // paddingBottom: '10px',
+      background: '#f9f9f9',
+      borderLeft: '10px solid #ccc',
+      margin: '1.5em 10px',
+      padding: '0.5em 10px',
+    },
   },
 };
 
