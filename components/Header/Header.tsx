@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 const Header: FC = () => (
-  <Box bg="yellow.800" px="4">
+  <Box bg="blue.800" px="4">
     <Box h="80px" justifyContent="space-between" maxW="1280px" m="auto" d="flex" alignItems="center">
       <Text color="white" fontSize="18px" fontWeight="bold">
         Logo
@@ -14,7 +14,7 @@ const Header: FC = () => (
             mr="4"
             cursor="pointer"
             _hover={{
-              color: 'yellow.300',
+              color: 'blue.200',
             }}
             transition="0.5s ease-in"
           >
@@ -25,7 +25,7 @@ const Header: FC = () => (
           <Text
             cursor="pointer"
             _hover={{
-              color: 'yellow.300',
+              color: 'blue.200',
             }}
             transition="0.5s ease-in"
           >

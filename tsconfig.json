@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
-      "@graphql/*": ["graphql/*"]
+      "@graphql/*": ["graphql/*"],
+      "@store/*": ["store/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
